@@ -9,6 +9,7 @@ type FunctionProps = {
 
 export default function Functions({venlyConnect}: FunctionProps) {
     const [accountRes, setAccountRes] = useState<Account>()
+    const [manageRes, setManageRes] = useState<any>()
 
     async function getAccount() {
         // get Account for Polygon / Matic
@@ -19,12 +20,21 @@ export default function Functions({venlyConnect}: FunctionProps) {
         })
     }
 
+    async function manageWallets() {
+        // get Account for Polygon / Matic
+        venlyConnect.manageWallets(SecretType.MATIC).then((res) => {
+            setManageRes(res)
+        }).catch((e) => {
+            setManageRes(e)
+        })
+    }
+
     return (
         <div>
             <h2 className="text-center text-xl">Example Functions</h2>
             <div className="grid grid-cols-2 mt-4 gap-4 w-full">
                 <FunctionCard title={"Get Account for one Chain"} button={"Get Account"} func={getAccount} result={accountRes}/>
-                <FunctionCard title={"Get Account for one Chain"} button={"Get Account"} func={getAccount} result={accountRes}/>
+                <FunctionCard title={"Manage Wallets for One Chain"} button={"Manage Wallets"} func={manageWallets} result={manageRes}/>
                 <FunctionCard title={"Get Account for one Chain"} button={"Get Account"} func={getAccount} result={accountRes}/>
                 <FunctionCard title={"Get Account for one Chain"} button={"Get Account"} func={getAccount} result={accountRes}/>
                 <FunctionCard title={"Get Account for one Chain"} button={"Get Account"} func={getAccount} result={accountRes}/>

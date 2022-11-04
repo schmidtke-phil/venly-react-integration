@@ -12,6 +12,7 @@
     "@venly/connect": "^1.39.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-json-pretty": "^2.2.0",
     "tslib": "^2.4.1"
   },
   "devDependencies": {
